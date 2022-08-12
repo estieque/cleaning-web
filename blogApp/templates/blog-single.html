@@ -1,0 +1,130 @@
+{% extends 'blogbase.html' %}
+{%load static%}
+{% block blogpost%}
+
+
+{% for blogslider in blogslider %}
+<section class="hero-wrap hero-wrap-2" style="background-image: url('{{blogslider.image.url}}');" data-stellar-background-ratio="0.5">
+  {% endfor %}
+  
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-end">
+          <div class="col-md-9 ftco-animate pb-5">
+          	<p class="breadcrumbs mb-2"><span class="mr-2"><a href="{% url 'home' %}">Home <i class="fa fa-chevron-right"></i></a></span> <span class="mr-2"><a href="{% url 'blog' %}">Blog <i class="fa fa-chevron-right"></i></a></span> <span>Blog Details <i class="fa fa-chevron-right"></i></span></p>
+            <h1 class="mb-0 bread">Blog</h1>
+          </div>
+        </div>
+      </div>
+    </section>
+		
+		<section class="ftco-section ftco-degree-bg">
+     <div class="row justify-content-center pb-5 mb-3"> <h1> {{blogd.title }}</h1> </div>
+      <div class="container">
+        
+        <div class="row">
+          
+          <div class="col-lg-8 ftco-animate">
+            
+          	<p>
+              <img src="{{blogd.image.url}}" alt="" class="img-fluid">
+            </p>
+            <div>
+              {{blogd.content | safe}}
+          </div>
+            <div class="tag-widget post-tag-container mb-5 mt-5">
+              <div class="tagcloud">
+                <a href="" class="tag-cloud-link">{{blogd.meta_tags}}</a>
+              </div>
+            </div>
+            
+            <div class="about-author d-flex p-4 bg-light">
+              
+              <div class="bio mr-5">
+                <img src="{{blogd.author.image.url}}" alt="Image placeholder" style="height: 60px; width: 60px;" class="img-fluid mb-4">
+              </div>
+              <div class="desc">
+                <h3>{{blogd.author}}</h3>
+              </div>
+              
+            </div>
+            <div class="pt-5 mt-5">
+              <h3 class="mb-5">All Comments</h3>
+              {% if not blogd.comments.all %}
+              <h8> No Comments Yet </h8>
+              {% else %}
+              <ul class="comment-list">
+                {% for comment in blogd.comments%}
+                <li class="comment">
+                  <div class="comment-body">
+                    <h3>{{ comment.name}}</h3>
+                    <div class="meta">{{comment.add_date}}</div>
+                    <p>{{comment.content}}</p>
+                    
+                  </div>
+                  {% endfor %}
+                </li>
+                
+                {% endif %}
+              </ul>
+              <!-- END comment-list -->
+              
+              <div class="comment-form-wrap pt-5">
+                <h3 class="mb-5">Leave a comment</h3>
+                <form action="{% url 'blog_detail' blogd.slug %}" method="POST" class="p-5 bg-light" id="myForm">
+                  {% csrf_token %}
+                  <div class="form-group">
+                    <label for="name">Name *</label>
+                    <input type="text" class="form-control" id="name" name="name">
+                  </div>
+                  <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" class="form-control" id="email" name="email">
+                  </div>
+                  <div class="form-group">
+                    <label for="website">Website</label>
+                    <input type="url" class="form-control" id="website" name="website">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea name="content" id="message" cols="30" rows="10" class="form-control"> </textarea>
+                  </div>
+                  <div class="form-group">
+                    <input type="submit" value="Post Comment" class="btn py-3 px-4 btn-primary">
+                  </div>
+
+                </form>
+              </div>
+            </div>
+
+          </div> <!-- .col-md-8 -->
+          <div class="col-lg-4 sidebar pl-lg-5 ftco-animate">
+            <div class="sidebar-box">
+            </div>
+            <div class="sidebar-box ftco-animate">
+              
+            </div>
+
+            <div class="sidebar-box ftco-animate">
+              <h3>Recent Blog</h3>
+              {% for homeblogs in homeblogs %}
+              <div class="block-21 mb-4 d-flex">
+                <a class="blog-img mr-4" style="background-image: url('{{homeblogs.image.url}}');"></a>
+                <div class="text">
+                  <h3 class="heading"><a href="{% url 'blog_detail' homeblogs.slug %}">{{homeblogs.title}}</a></h3>
+                  <div class="meta">
+                    <div><a href="#"><span class="icon-calendar"></span>{{homeblogs.add_date}}</a></div>
+                    <div><a href="#"><span class="icon-person"></span> {{homeblogs.author}}</a></div>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+            
+          </div>
+          
+        </div>
+      </div>
+    </section> <!-- .section -->
+{% endblock %}
