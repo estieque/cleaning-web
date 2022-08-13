@@ -19,7 +19,7 @@ class PostCategoryAdmin(SummernoteModelAdmin):
 admin.site.register(PostCategory, PostCategoryAdmin)
 
 class BlogpostAdmin(SummernoteModelAdmin):
-    list_display = ('title', 'meta_description', 'slug', 'image_tag', 'add_date')
+    list_display = ('title', 'slug', 'image_tag', 'add_date')
     search_fields = ('title',)
     summernote_fields = ('content',)
     list_per_page = 10

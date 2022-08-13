@@ -7,7 +7,7 @@ class Portfolio(models.Model):
     portfolio_id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=100)
     slug = models.SlugField(unique=True, null=True)
-    meta_description = models.CharField(max_length=80)
+    meta_description = models.CharField(max_length=155)
     meta_tags = models.CharField(max_length=200)
     descriptions = models.TextField()
     image = models.ImageField(upload_to='portfolio/')

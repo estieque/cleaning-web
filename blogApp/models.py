@@ -39,7 +39,7 @@ class PostCategory(models.Model):
 class BlogPost(models.Model):
     post_id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=100)
-    meta_description = models.CharField(max_length=80)
+    meta_description = models.CharField(max_length=155)
     meta_tags = models.CharField(max_length=200)
     content = models.TextField()
     slug = models.SlugField(null=True, unique=True)

@@ -4,9 +4,10 @@
 <html lang="en">
   <head>
     {% for settings in settings  %}
-    <title>Cleaning Company - Free Bootstrap 4 Template by Colorlib</title>
+    <title>{% block titles %}{% endblock titles %}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="{% block meta_description %}{% endblock meta_description %}"/>
     
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
 

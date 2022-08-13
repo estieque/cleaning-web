@@ -1,6 +1,14 @@
 {% extends 'base.html' %}
 {%load static%}
 
+{% block titles %}
+{{settings.title}}
+{% endblock titles %}
+
+{% block meta_description %}
+		{{settings.meta_description}}	
+{% endblock meta_description %}
+
 {% block homecontent %}
 {% for hslider in hslider %}
 <div class="hero-wrap js-fullheight" style="background-image: url('{{hslider.image.url}}');" data-stellar-background-ratio="0.5">

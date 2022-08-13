@@ -1,6 +1,14 @@
 {% extends 'base.html' %}
 {%load static%}
 
+{% block titles %}
+About US-Cleaning Company
+{% endblock titles %}
+
+{% block meta_description %}
+			
+		{% endblock meta_description %}
+
 {% block aboutcontent %}
 {% for aboutslider in aboutslider %}
     <section class="hero-wrap hero-wrap-2" style="background-image: url('{{aboutslider.image.url}}');" data-stellar-background-ratio="0.5">
