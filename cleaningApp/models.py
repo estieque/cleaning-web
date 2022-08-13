@@ -7,7 +7,7 @@ class SiteSetting(models.Model):
         ('False', 'False'),
     )
     title = models.CharField(max_length=200)
-    meta_tags = models.CharField(max_length=200)
+    meta_keyword = models.CharField(max_length=200)
     meta_description = models.TextField()
     address = models.CharField(max_length=200)
     phone = models.IntegerField()

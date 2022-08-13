@@ -9,6 +9,12 @@
 		{{settings.meta_description}}	
 {% endblock meta_description %}
 
+{% block meta_keyword %}
+{{settings.meta_keyword}}
+{% endblock meta_keyword %}
+
+
+
 {% block homecontent %}
 {% for hslider in hslider %}
 <div class="hero-wrap js-fullheight" style="background-image: url('{{hslider.image.url}}');" data-stellar-background-ratio="0.5">
