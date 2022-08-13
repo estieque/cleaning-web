@@ -16,6 +16,7 @@ class SiteSetting(models.Model):
     facebook = models.CharField(blank=True, max_length=100)
     instagram = models.CharField(blank=True, max_length=100)
     linkedIn = models.CharField(blank=True, max_length=100)
+    twitter = models.CharField(blank=True, max_length=100)
     address = models.TextField()
     contact = models.TextField()
     status = models.CharField(max_length=50, choices=STATUS)
