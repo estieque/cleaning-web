@@ -48,6 +48,8 @@ class BlogPost(models.Model):
     author = models.ForeignKey(PostAuthor,null=True, on_delete=models.CASCADE)
     add_date = models.DateTimeField(auto_now_add=True, null=True)
     
+    
+    
     def image_tag(self):
         return format_html('<img src="/media/{}" heights="60" width="60" />'.format(self.image))
     
