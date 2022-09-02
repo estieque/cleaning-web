@@ -12,9 +12,9 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
-import django_heroku
-import dj_database_url
-from decouple import config
+
+
+
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import URLPattern
@@ -29,9 +29,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-*4g=1(x84@(4r=bafgae1c8e_r+jempphla#f^k0jj7#!*@t&!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','cleaningweb.herokuapp.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'slider',
     'project_portfolio',
     'django_summernote',
+    'django_heroku',
 ]
 
 MIDDLEWARE = [
@@ -133,11 +134,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+if not DEBUG:
+        STATIC_ROOT = ''
 STATICFILES_DIRS = [
      os.path.join(BASE_DIR, 'static'),
  ]
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
@@ -174,4 +177,3 @@ if settings.DEBUG:
 
 #STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-django_heroku.settings(locals())
